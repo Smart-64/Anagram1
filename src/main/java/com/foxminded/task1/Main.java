@@ -8,12 +8,8 @@ public class Main {
 
         Anagram anagram = new Anagram();
         System.out.println("Введите текст");
-        try(Scanner console = new Scanner(System.in))
-        {
-            String[] words = anagram.splitStr(console.nextLine());
-            System.out.println(anagram.ReverseWords(words));
-
+        try (Scanner console = new Scanner(System.in)) {
+            anagram.apply(console.nextLine());
         }
-
     }
 }

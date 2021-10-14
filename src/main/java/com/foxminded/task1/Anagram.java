@@ -1,45 +1,45 @@
 package com.foxminded.task1;
 
-public class Anagram {
+import java.util.function.Function;
+
+public class Anagram implements Function<String, String> {
 
     public static final String whitespace = " ";
 
-    public String[] splitStr(String inputStr)
-    {
-        return inputStr.split(whitespace);
-    }
-
-    public String ReverseWords(String[] words)
-    {
+    @Override
+    public String apply(String s) {
+        String[] words = s.split(whitespace);
         StringBuilder reversedFinalOutput = new StringBuilder();
 
-        for (String word: words) {
+        for (String word : words) {
 
-            char[] chars = word.toCharArray();
-
-            int i = 0;
-            int j = word.length() - 1;
-            while (i < j){
-                if (!Character.isLetter(chars[i])) {
-                    j++;
-                }
-                else if(!Character.isLetter(chars[j])){
-                    i--;
-                }
-                else
-                {
-                    char temporaryChar = chars[i];
-                    chars[i] = chars[j];
-                    chars[j] = temporaryChar;
-                }
-                i++;
-                j--;
-            }
-            reversedFinalOutput.append(chars).append(whitespace);
+            reversedFinalOutput
+                    .append(reverse(word))
+                    .append(whitespace);
         }
 
-        String outputStr = reversedFinalOutput.toString();
-
-        return outputStr;
+        return reversedFinalOutput.toString();
     }
+
+    private char[] reverse(String word) {
+        char[] chars = word.toCharArray();
+
+        int i = 0;
+        int j = chars.length - 1;
+        while (i < j) {
+            if (!Character.isLetter(chars[i])) {
+                j++;
+            } else if (!Character.isLetter(chars[j])) {
+                i--;
+            } else {
+                char temporaryChar = chars[i];
+                chars[i] = chars[j];
+                chars[j] = temporaryChar;
+            }
+            i++;
+            j--;
+        }
+        return chars;
+    }
+
 }
