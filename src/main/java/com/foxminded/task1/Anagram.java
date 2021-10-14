@@ -9,16 +9,16 @@ public class Anagram implements Function<String, String> {
     @Override
     public String apply(String s) {
         String[] words = s.split(whitespace);
-        StringBuilder reversedFinalOutput = new StringBuilder();
+        StringBuilder result = new StringBuilder();
 
         for (String word : words) {
 
-            reversedFinalOutput
+            result
                     .append(reverse(word))
                     .append(whitespace);
         }
 
-        return reversedFinalOutput.toString();
+        return result.toString();
     }
 
     private char[] reverse(String word) {
