@@ -9,7 +9,7 @@ public class Main {
         Anagram anagram = new Anagram();
         System.out.println("Введите текст");
         try (Scanner console = new Scanner(System.in)) {
-            anagram.apply(console.nextLine());
+            System.out.println(anagram.apply(console.nextLine()).trim());
         }
     }
 }
